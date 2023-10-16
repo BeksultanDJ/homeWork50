@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        .person {
+            display: inline-block;
+            margin: 10px;
+            border: 1px solid #eee;
+            box-shadow: 0 2px 2px #ccc;
+            width: 200px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="person">
+    <h1>Jane</h1>
+    <p>Age: 28</p>
+</div>
+
+<div class="person">
+    <h1>John</h1>
+    <p>Age: 30</p>
+</div>
+<script type="text/babel">
+
+        const Person = () => {
+            return (
+                <div className="person">
+                    <h1>Jane</h1>
+                    <p>Age: 28</p>
+                </div>
+            );
+        };
+
+        const container = document.getElementById('p1');
+        ReactDOM.createRoot(container).render(<Person />);
+
+    </script>
+</body>
+</html>
