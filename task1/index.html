@@ -7,40 +7,70 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
-        .person {
-            display: inline-block;
-            margin: 10px;
-            border: 1px solid #eee;
-            box-shadow: 0 2px 2px #ccc;
-            width: 200px;
+        .app {
+            display: flex;
+            margin: 25px;
+            padding: 15px;
+        }
+
+        .movie-card {
+            border: 3px solid black;
+            border-radius: 5px;
+            background: rgb(238,174,202);
+            background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+            margin: 15px;
             padding: 20px;
+            text-align: center;
+        }
+
+        .movie-card > img {
+            width: auto;
+            height: 300px;
+            border: 1px solid black;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
-<div class="person">
-    <h1>Jane</h1>
-    <p>Age: 28</p>
-</div>
 
-<div class="person">
-    <h1>John</h1>
-    <p>Age: 30</p>
-</div>
+<div id="app"></div>
+
 <script type="text/babel">
+    function MovieCard(props) {
+        return (
+            <div className="movie-card">
+                <img src={props.posterUrl} alt={props.title} />
+                <h2>{props.title}</h2>
+                <p>Год выпуска: {props.releaseYear}</p>
+            </div>
+        );
+    }
 
-        const Person = () => {
-            return (
-                <div className="person">
-                    <h1>Jane</h1>
-                    <p>Age: 28</p>
-                </div>
-            );
-        };
+    function App() {
+        return (
+            <div className="app">
+                <MovieCard
+                    title="Человек-паук"
+                    releaseYear="2002"
+                    posterUrl="https://upload.wikimedia.org/wikipedia/ru/5/5f/Spiderman_movie.jpg"
+                />
+                <MovieCard
+                    title="Назад в будущее"
+                    releaseYear="1985"
+                    posterUrl="https://upload.wikimedia.org/wikipedia/ru/9/90/BTTF_DVD_rus.jpg"
+                />
+                <MovieCard
+                    title="Принцесса Мононоке"
+                    releaseYear="1997"
+                    posterUrl="https://upload.wikimedia.org/wikipedia/ru/3/38/Mononoke_Hime_DVD_Cover.jpg"
+                />
+            </div>
+        );
+    }
 
-        const container = document.getElementById('p1');
-        ReactDOM.createRoot(container).render(<Person />);
+    const rootElement = document.getElementById('app');
+    ReactDOM.createRoot(rootElement).render(<App />);
 
-    </script>
+</script>
 </body>
 </html>
